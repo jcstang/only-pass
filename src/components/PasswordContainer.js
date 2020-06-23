@@ -37,7 +37,7 @@ export default function PasswordContainer() {
       <form>
         <div className="form-group">
           <label htmlFor="formControlRange">Character Range {characterLength}</label>
-          <input type="range" className="form-control-range" id="formControlRange" onChange={sliderChangeHandler} />
+          <input min="3" max="70" type="range" className="form-control-range" id="formControlRange" onChange={sliderChangeHandler} />
         </div>
       </form>
 
