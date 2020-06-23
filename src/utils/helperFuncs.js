@@ -39,7 +39,12 @@ const createNewPassword = (requestLength) => {
     if (i > 5) {
       craftedPasswordString += upperCaseAlphabet[getRandomInt(upperCaseAlphabet.length)];
     }
+
     craftedPasswordString += lowerCaseAlphabet[getRandomInt(lowerCaseAlphabet.length)];
+
+    if (i % 2 === 0) {
+      craftedPasswordString += getRandomInt(100).toString();
+    }
   }
 
   console.log('we are inside create new password');
