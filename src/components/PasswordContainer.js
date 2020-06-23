@@ -6,6 +6,7 @@ export default function PasswordContainer() {
   // USE STATE
   // =============================================================
   const [passwordText, setPasswordText] = useState('');
+  const [characterLength, setCharacterLength] = useState(0);
 
 
   const getRandomInt = (maxRange) => {
@@ -20,7 +21,7 @@ export default function PasswordContainer() {
       'yup33t$$jjlkRC##2yK'
     ];
 
-    return listOfSamplePasswords[getRandomInt(3)];
+    return listOfSamplePasswords[getRandomInt(3)] + characterLength.toString();
   }
 
   const changeHandler = (event) => setPasswordText(event.target.value);
@@ -32,10 +33,26 @@ export default function PasswordContainer() {
 
   }
 
+  const sliderChangeHandler = (event) => {
+    // console.log(event.target.value);
+    const passwordLength = event.target.value;
+
+    setCharacterLength(passwordLength);
+  }
+
   // JSX - return statement
   // =============================================================
   return (
     <div className="container" id="password-container">
+      {/* slider */}
+      <form>
+        <div class="form-group">
+          <label for="formControlRange">Character Range {characterLength}</label>
+          <input type="range" class="form-control-range" id="formControlRange" onChange={sliderChangeHandler} />
+        </div>
+      </form>
+
+      {/* password generator */}
       <form onSubmit={submitHandler} className="form-inline justify-content-center">
         <div className="form-group mx-sm-3 mb-2">
           <label htmlFor="gen-password" className="sr-only">Password</label>
