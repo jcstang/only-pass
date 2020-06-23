@@ -35,9 +35,9 @@ export default function PasswordContainer() {
     <div className="container" id="password-container">
       {/* slider */}
       <form>
-        <div class="form-group">
-          <label for="formControlRange">Character Range {characterLength}</label>
-          <input type="range" class="form-control-range" id="formControlRange" onChange={sliderChangeHandler} />
+        <div className="form-group">
+          <label htmlFor="formControlRange">Character Range {characterLength}</label>
+          <input type="range" className="form-control-range" id="formControlRange" onChange={sliderChangeHandler} />
         </div>
       </form>
 
