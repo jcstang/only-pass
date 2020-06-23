@@ -9,16 +9,16 @@ export default function PasswordContainer() {
   const [passwordText, setPasswordText] = useState('');
   const [characterLength, setCharacterLength] = useState(0);
 
-  const generateRandomPassword = () => {
-    return helperFuncs.createNewPassword(characterLength);
-  }
+  // const generateRandomPassword = () => {
+  //   return helperFuncs.createNewPassword(characterLength);
+  // }
 
   const changeHandler = (event) => setPasswordText(event.target.value);
 
   const submitHandler = (event) => {
     event.preventDefault();
 
-    setPasswordText(generateRandomPassword());
+    setPasswordText(helperFuncs.createNewPassword(characterLength));
 
   }
 

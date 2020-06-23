@@ -15,59 +15,19 @@ const getRandomInt = (maxRange) => {
   return Math.floor(Math.random() * Math.floor(maxRange));
 }
 
-// const getRandomNumber = (maxRange) => {
-//   return getRandomInt(maxRange).toString();
-// }
-
-// const pickCharacterArray = () => {
-//   const arrOfArrays = [
-//     lowerCaseAlphabet,
-//     upperCaseAlphabet,
-//     specialCharacters,
-//     getRandomInt
-//   ];
-
-//   return arrOfArrays[getRandomInt(arrOfArrays.length)];
-// }
-
 const createNewPassword = (requestLength) => {
-
   let craftedPasswordString = '';
-
-  // for (let i = 0; i <= requestLength; i++) {
-  //   craftedPasswordString += pickCharacterArray();
-  // }
 
   for (let i = 0; i < requestLength; i++) {
     craftedPasswordString += allCharactersArray[getRandomInt(allCharactersArray.length)];
-    // if (i > 2) {
-    //   craftedPasswordString += specialCharacters[getRandomInt(specialCharacters.length)];
-    // }
-    // if (i > 5) {
-    //   craftedPasswordString += upperCaseAlphabet[getRandomInt(upperCaseAlphabet.length)];
-    // }
-
-    // craftedPasswordString += lowerCaseAlphabet[getRandomInt(lowerCaseAlphabet.length)];
-
-    // if (i % 2 === 0) {
-    //   craftedPasswordString += getRandomInt(100).toString();
-    // }
   }
 
-  console.log('we are inside create new password');
+  // console.log('we are inside create new password');
   console.log(craftedPasswordString);
+  console.log(`here is craftedpasswordstring length: ${craftedPasswordString.length}`);
+  console.log(`here is requested length: ${requestLength}`)
 
   return craftedPasswordString;
-
-  // const sizeAttachment = requestLength || '0';
-  // const craftedPassword =
-  //   lowerCaseAlphabet[getRandomInt(lowerCaseAlphabetLength)]
-  //   + getRandomInt(100).toString()
-  //   + specialCharacters[getRandomInt(specialCharacters.length)]
-  //   + upperCaseAlphabet[getRandomInt(upperCaseAlphabetLength)]
-  //   + sizeAttachment;
-
-  // return craftedPassword.toString();
 };
 
 
