@@ -22,9 +22,10 @@ const createNewPassword = (requestLength) => {
   const craftedPassword =
     lowerCaseAlphabet[getRandomInt(lowerCaseAlphabetLength)]
     + getRandomInt(100).toString()
-    + upperCaseAlphabet[getRandomInt(upperCaseAlphabetLength)];
+    + upperCaseAlphabet[getRandomInt(upperCaseAlphabetLength)]
+    + requestLength;
 
-  return craftedPassword;
+  return craftedPassword.toString();
 };
 
 // module.exports = this.generateRandomPassword;
