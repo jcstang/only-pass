@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './PasswordContainer.css';
+import helperFuncs from '../utils/helperFuncs';
 
 export default function PasswordContainer() {
 
@@ -21,7 +22,30 @@ export default function PasswordContainer() {
       'yup33t$$jjlkRC##2yK'
     ];
 
-    return listOfSamplePasswords[getRandomInt(3)] + characterLength.toString();
+    const specialCharacters = [
+      '$',
+      '@',
+      '#',
+      '!',
+      '%'
+    ];
+
+    const lowerCaseAlphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+    const lowerCaseAlphabetLength = lowerCaseAlphabet.length;
+    const upperCaseAlphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+    const upperCaseAlphabetLength = upperCaseAlphabet.length;
+
+    const craftedPassword =
+      lowerCaseAlphabet[getRandomInt(lowerCaseAlphabetLength)]
+      + getRandomInt(100).toString()
+      + upperCaseAlphabet[getRandomInt(upperCaseAlphabetLength)]
+      + characterLength.toString();
+
+
+    console.log(craftedPassword);
+    console.log(helperFuncs.createNewPassword());
+
+    return craftedPassword;
   }
 
   const changeHandler = (event) => setPasswordText(event.target.value);
