@@ -17,18 +17,30 @@ const getRandomInt = (maxRange) => {
   return Math.floor(Math.random() * Math.floor(maxRange));
 }
 
+const pickCharacterArray = () => {
+  const arrOfArrays = [
+    lowerCaseAlphabet,
+    upperCaseAlphabet,
+    specialCharacters,
+    getRandomInt
+  ];
+
+  return arrOfArrays[getRandomInt[arrOfArrays.length]];
+}
+
 const createNewPassword = (requestLength) => {
 
+  const sizeAttachment = requestLength || '0';
   const craftedPassword =
     lowerCaseAlphabet[getRandomInt(lowerCaseAlphabetLength)]
     + getRandomInt(100).toString()
+    + specialCharacters[getRandomInt(specialCharacters.length)]
     + upperCaseAlphabet[getRandomInt(upperCaseAlphabetLength)]
-    + requestLength;
+    + sizeAttachment;
 
   return craftedPassword.toString();
 };
 
-// module.exports = this.generateRandomPassword;
 
 module.exports = {
   createNewPassword: createNewPassword

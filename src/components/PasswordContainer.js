@@ -9,33 +9,8 @@ export default function PasswordContainer() {
   const [passwordText, setPasswordText] = useState('');
   const [characterLength, setCharacterLength] = useState(0);
 
-
-  // const getRandomInt = (maxRange) => {
-  //   // maxRange = 3, expected output 0, 1, 2
-  //   return Math.floor(Math.random() * Math.floor(maxRange));
-  // }
-
   const generateRandomPassword = () => {
-    // const listOfSamplePasswords = [
-    //   'ght$$jjlkRC##2yK',
-    //   'ght$$jjlkRC@#$$%^2yK',
-    //   'yup33t$$jjlkRC##2yK'
-    // ];
-
-    // const lowerCaseAlphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
-    // const lowerCaseAlphabetLength = lowerCaseAlphabet.length;
-    // const upperCaseAlphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
-    // const upperCaseAlphabetLength = upperCaseAlphabet.length;
-
-    // const craftedPassword =
-    //   lowerCaseAlphabet[getRandomInt(lowerCaseAlphabetLength)]
-    //   + getRandomInt(100).toString()
-    //   + upperCaseAlphabet[getRandomInt(upperCaseAlphabetLength)]
-    //   + characterLength.toString();
-
-    // return craftedPassword;
-    helperFuncs.createNewPassword(4);
-    return helperFuncs.createNewPassword(4);
+    return helperFuncs.createNewPassword(characterLength);
   }
 
   const changeHandler = (event) => setPasswordText(event.target.value);
