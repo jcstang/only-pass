@@ -17,6 +17,10 @@ const getRandomInt = (maxRange) => {
   return Math.floor(Math.random() * Math.floor(maxRange));
 }
 
+const getRandomNumber = (maxRange) => {
+  return getRandomInt(maxRange).toString();
+}
+
 const pickCharacterArray = () => {
   const arrOfArrays = [
     lowerCaseAlphabet,
@@ -25,16 +29,19 @@ const pickCharacterArray = () => {
     getRandomInt
   ];
 
-  return arrOfArrays[getRandomInt[arrOfArrays.length]];
+  return arrOfArrays[getRandomInt(arrOfArrays.length)];
 }
 
 const createNewPassword = (requestLength) => {
 
   let craftedPasswordString = '';
 
-  for (let i = 0; i < requestLength; i++) {
+  for (let i = 0; i <= requestLength; i++) {
     craftedPasswordString += pickCharacterArray();
   }
+
+  console.log('we are inside create new password');
+  console.log(craftedPasswordString);
 
   return craftedPasswordString;
 
