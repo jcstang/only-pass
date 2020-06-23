@@ -35,9 +35,9 @@ export default function PasswordContainer() {
     // copyValue.select();
     // copyValue.setSelectionRange(0, 99999);
     // document.execCommand("copy");
-    let copyThing = document.getElementById('copy-button').value;
-
-    copy(document.getElementById('copy-button').value);
+    let copyThing = document.getElementById('gen-password').value;
+    console.log(copyThing);
+    copy(copyThing);
 
     // alert('copied text: ' + copyValue.value);
 
