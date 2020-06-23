@@ -1,4 +1,12 @@
 
+const specialCharacters = [
+  '$',
+  '@',
+  '#',
+  '!',
+  '%'
+];
+
 const lowerCaseAlphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 const lowerCaseAlphabetLength = lowerCaseAlphabet.length;
 const upperCaseAlphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
@@ -9,7 +17,7 @@ const getRandomInt = (maxRange) => {
   return Math.floor(Math.random() * Math.floor(maxRange));
 }
 
-const generateRndPassword = () => {
+const createNewPassword = (requestLength) => {
 
   const craftedPassword =
     lowerCaseAlphabet[getRandomInt(lowerCaseAlphabetLength)]
@@ -22,5 +30,5 @@ const generateRndPassword = () => {
 // module.exports = this.generateRandomPassword;
 
 module.exports = {
-  createNewPassword: generateRndPassword
+  createNewPassword: createNewPassword
 }
