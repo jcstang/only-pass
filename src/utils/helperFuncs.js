@@ -30,15 +30,23 @@ const pickCharacterArray = () => {
 
 const createNewPassword = (requestLength) => {
 
-  const sizeAttachment = requestLength || '0';
-  const craftedPassword =
-    lowerCaseAlphabet[getRandomInt(lowerCaseAlphabetLength)]
-    + getRandomInt(100).toString()
-    + specialCharacters[getRandomInt(specialCharacters.length)]
-    + upperCaseAlphabet[getRandomInt(upperCaseAlphabetLength)]
-    + sizeAttachment;
+  let craftedPasswordString = '';
 
-  return craftedPassword.toString();
+  for (let i = 0; i < requestLength; i++) {
+    craftedPasswordString += pickCharacterArray();
+  }
+
+  return craftedPasswordString;
+
+  // const sizeAttachment = requestLength || '0';
+  // const craftedPassword =
+  //   lowerCaseAlphabet[getRandomInt(lowerCaseAlphabetLength)]
+  //   + getRandomInt(100).toString()
+  //   + specialCharacters[getRandomInt(specialCharacters.length)]
+  //   + upperCaseAlphabet[getRandomInt(upperCaseAlphabetLength)]
+  //   + sizeAttachment;
+
+  // return craftedPassword.toString();
 };
 
 
