@@ -19,27 +19,35 @@ export default function PasswordContainer(props) {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    let comboOptions = '';
+    // let comboOptions = '';
 
-    // ULNS
+    // // ULNS
 
-    if (useUpper) {
-      comboOptions += 'U'
-    }
-    if (useLower) {
-      comboOptions += 'L'
-    }
-    if (useNumber) {
-      comboOptions += 'N'
-    }
-    if (useSymbol) {
-      comboOptions += 'S'
-    }
+    // if (useUpper) {
+    //   comboOptions += 'U'
+    // }
+    // if (useLower) {
+    //   comboOptions += 'L'
+    // }
+    // if (useNumber) {
+    //   comboOptions += 'N'
+    // }
+    // if (useSymbol) {
+    //   comboOptions += 'S'
+    // }
+
+    const configString =
+      (useUpper ? 'U' : '')
+      + (useLower ? 'L' : '')
+      + (useNumber ? 'N' : '')
+      + (useSymbol ? 'S' : '').trim();
+    console.log(`config string: ${configString}`);
 
 
-    console.log(`passwordLength: ${characterLength} comboOptions: ${comboOptions}`)
+    // console.log(`passwordLength: ${characterLength} comboOptions: ${comboOptions}`)
     // SET STATE
-    setPasswordText(helperFuncs.createNewPassword(characterLength, comboOptions));
+    // setPasswordText(helperFuncs.createNewPassword(characterLength, comboOptions));
+    setPasswordText(helperFuncs.createNewPassword(characterLength, configString));
   }
 
   // JSX - return statement
