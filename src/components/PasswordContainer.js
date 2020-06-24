@@ -69,27 +69,27 @@ export default function PasswordContainer(props) {
       </form>
 
       <form className="form-checkbox text-left">
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" />
-          <label class="form-check-label" for="defaultCheck1">
+        <div className="form-check">
+          <input className="form-check-input" type="checkbox" value="" id="defaultCheck1" />
+          <label className="form-check-label" htmlFor="defaultCheck1">
             Include uppercase letters
           </label>
         </div>
-        <div class="form-check text-left">
-          <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" />
-          <label class="form-check-label" for="defaultCheck2">
+        <div className="form-check text-left">
+          <input className="form-check-input" type="checkbox" value="" id="defaultCheck2" />
+          <label className="form-check-label" htmlFor="defaultCheck2">
             Include lowercase letters
           </label>
         </div>
-        <div class="form-check text-left">
-          <input class="form-check-input" type="checkbox" value="" id="defaultCheck3" />
-          <label class="form-check-label" for="defaultCheck3">
+        <div className="form-check text-left">
+          <input className="form-check-input" type="checkbox" value="" id="defaultCheck3" />
+          <label className="form-check-label" htmlFor="defaultCheck3">
             Include Numbers
           </label>
         </div>
-        <div class="form-check text-left">
-          <input class="form-check-input" type="checkbox" value="" id="defaultCheck4" />
-          <label class="form-check-label" for="defaultCheck4">
+        <div className="form-check text-left">
+          <input className="form-check-input" type="checkbox" value="" id="defaultCheck4" />
+          <label className="form-check-label" htmlFor="defaultCheck4">
             Include Symbols
           </label>
         </div>
