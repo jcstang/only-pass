@@ -7,7 +7,7 @@ export default function PasswordContainer(props) {
   // USE STATE
   // =============================================================
   const [passwordText, setPasswordText] = useState('');
-  const [characterLength, setCharacterLength] = useState(0);
+  const [characterLength, setCharacterLength] = useState(16);
   // const [showA, setShowA] = useState(false);
   // const toggleShowA = () => setShowA(!showA);
 
@@ -62,20 +62,50 @@ export default function PasswordContainer(props) {
 
       {/* slider */}
       <form>
-        <div className="form-group">
+        <div className="form-group sliders" id="char-slider">
           <label htmlFor="formControlRange">Character Range {characterLength}</label>
-          <input min="3" max="70" type="range" className="form-control-range" id="formControlRange" onChange={sliderChangeHandler} />
+          <input min="3" max="50" type="range" className="form-control-range" id="formControlRange" onChange={sliderChangeHandler} value={characterLength} />
         </div>
       </form>
 
+      <form className="form-checkbox text-left">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" />
+          <label class="form-check-label" for="defaultCheck1">
+            Include uppercase letters
+          </label>
+        </div>
+        <div class="form-check text-left">
+          <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" />
+          <label class="form-check-label" for="defaultCheck2">
+            Include lowercase letters
+          </label>
+        </div>
+        <div class="form-check text-left">
+          <input class="form-check-input" type="checkbox" value="" id="defaultCheck3" />
+          <label class="form-check-label" for="defaultCheck3">
+            Include Numbers
+          </label>
+        </div>
+        <div class="form-check text-left">
+          <input class="form-check-input" type="checkbox" value="" id="defaultCheck4" />
+          <label class="form-check-label" for="defaultCheck4">
+            Include Symbols
+          </label>
+        </div>
+      </form>
+
+
       {/* password generator */}
-      <form onSubmit={submitHandler} className="form-inline justify-content-center">
+      <form onSubmit={submitHandler} className="form justify-content-center">
         <div className="form-group mx-sm-3 mb-2">
           <label htmlFor="gen-password" className="sr-only">Password</label>
           <input onChange={changeHandler} type="text" className="form-control" id="gen-password" value={passwordText} placeholder="Password" />
         </div>
-        <button type="submit" className="btn btn-primary mb-2">Generate Password</button>
-        <button type="button" className="btn btn-warning mb-2 ml-2" id="copy-button" onClick={props.copyHandler}>Copy</button>
+        <div className="form-group mx-sm-3 mb-2">
+          <button type="submit" className="btn btn-primary mb-2">Generate Password</button>
+          <button type="button" className="btn btn-warning mb-2 ml-2" id="copy-button" onClick={props.copyHandler}>Copy</button>
+        </div>
 
 
 
