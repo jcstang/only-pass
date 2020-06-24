@@ -25,7 +25,7 @@ export default function PasswordContainer(props) {
     const numbersChar = document.getElementById('defaultCheck3').checked || false;
     const symbolsChar = document.getElementById('defaultCheck4').checked || false;
 
-    console.log(`U:${upperChar} L:${lowerChar} S:${symbolsChar} N:${numbersChar}`);
+    // console.log(`U:${upperChar} L:${lowerChar} S:${symbolsChar} N:${numbersChar}`);
 
     if (upperChar) {
       comboOptions += 'U'
@@ -39,10 +39,8 @@ export default function PasswordContainer(props) {
     if (numbersChar) {
       comboOptions += 'N'
     }
-
-    console.log(comboOptions);
+    // console.log(comboOptions);
     setPasswordText(helperFuncs.createNewPassword(characterLength, comboOptions));
-
   }
 
   const sliderChangeHandler = (event) => {
