@@ -37,3 +37,10 @@
     transform: rotate(360deg);
   }
 }
+
+#main-toast {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: forestgreen;
+}
