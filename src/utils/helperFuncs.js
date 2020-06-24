@@ -44,11 +44,9 @@ const loopToCreatePassword = (passwordLength, logicArray) => {
 }
 
 const createNewPassword = (requestLength, logicString) => {
-  // let craftedPasswordString = '';
   // possiblities
   // U, UL, ULS, US, USN, UN, L, LS, LSN, LSNU, S, SN, N, NUL, ULNS
-
-  console.log(`inside of createNewPassword ${requestLength}, ${logicString}`);
+  // console.log(`inside of createNewPassword ${requestLength}, ${logicString}`);
 
   // FIXME: problem: symbols don't always show up, outcome: when a value is selected like "Include symbols" there SHOULD be a symbol.
 
