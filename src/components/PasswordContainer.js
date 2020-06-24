@@ -19,8 +19,29 @@ export default function PasswordContainer(props) {
 
   const submitHandler = (event) => {
     event.preventDefault();
+    let comboOptions = '';
+    const upperChar = document.getElementById('defaultCheck1').checked || false;
+    const lowerChar = document.getElementById('defaultCheck2').checked || false;
+    const numbersChar = document.getElementById('defaultCheck3').checked || false;
+    const symbolsChar = document.getElementById('defaultCheck4').checked || false;
 
-    setPasswordText(helperFuncs.createNewPassword(characterLength));
+    console.log(`U:${upperChar} L:${lowerChar} S:${symbolsChar} N:${numbersChar}`);
+
+    if (upperChar) {
+      comboOptions += 'U'
+    }
+    if (lowerChar) {
+      comboOptions += 'L'
+    }
+    if (symbolsChar) {
+      comboOptions += 'S'
+    }
+    if (numbersChar) {
+      comboOptions += 'N'
+    }
+
+    console.log(comboOptions);
+    setPasswordText(helperFuncs.createNewPassword(characterLength, comboOptions));
 
   }
 
@@ -31,34 +52,10 @@ export default function PasswordContainer(props) {
     setCharacterLength(passwordLength);
   }
 
-  // const copyButtonHandler = (event) => {
-  //   let copyValue = document.getElementById("gen-password");
-  //   copyValue.select();
-  //   copyValue.setSelectionRange(0, 99999);
-  //   document.execCommand("copy");
-
-  //   //TODO: add a toast or something or tooltip
-  //   // toggleShowA();
-  //   props.toggleShowA();
-
-  // }
-
   // JSX - return statement
   // =============================================================
   return (
     <div className="container" id="password-container">
-      {/* <Toast show={showA} onClose={toggleShowA}>
-        <Toast.Header>
-          <img
-            src="holder.js/20x20?text=%20"
-            className="rounded mr-2"
-            alt=""
-          />
-          <strong className="mr-auto">Bootstrap</strong>
-          <small>11 mins ago</small>
-        </Toast.Header>
-        <Toast.Body>Woohoo, you're reading this text in a Toast!</Toast.Body>
-      </Toast> */}
 
       {/* slider */}
       <form>
@@ -70,7 +67,7 @@ export default function PasswordContainer(props) {
 
       <form className="form-checkbox text-left">
         <div className="form-check">
-          <input className="form-check-input" type="checkbox" value="" id="defaultCheck1" />
+          <input className="form-check-input" type="checkbox" id="defaultCheck1" />
           <label className="form-check-label" htmlFor="defaultCheck1">
             Include uppercase letters
           </label>
@@ -106,10 +103,8 @@ export default function PasswordContainer(props) {
           <button type="submit" className="btn btn-primary mb-2">Generate Password</button>
           <button type="button" className="btn btn-warning mb-2 ml-2" id="copy-button" onClick={props.copyHandler}>Copy</button>
         </div>
-
-
-
       </form>
+
     </div>
   );
 }
