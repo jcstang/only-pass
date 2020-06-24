@@ -10,46 +10,34 @@ export default function PasswordContainer(props) {
   const [characterLength, setCharacterLength] = useState(16);
   const [useUpper, setUseUpper] = useState(true);
   const [useLower, setUseLower] = useState(true);
-  const [useSymbol, setUseSymbol] = useState(true);
   const [useNumber, setUseNumber] = useState(true);
+  const [useSymbol, setUseSymbol] = useState(true);
 
   const changeHandler = (event) => setPasswordText(event.target.value);
   const sliderChangeHandler = (event) => setCharacterLength(event.target.value);
 
-  // const passwordOptions = {
-  //   length: 12,
-  //   useUpper: true,
-  //   useLower: true,
-  //   useSymbol: true,
-  //   useNumber: true
-  // }
 
   const submitHandler = (event) => {
     event.preventDefault();
     let comboOptions = '';
 
-    // TODO: rename id for the checkboxes
-    // const upperChar = document.getElementById('defaultCheck1').checked || false;
-    // const lowerChar = document.getElementById('defaultCheck2').checked || false;
-    // const numbersChar = document.getElementById('defaultCheck3').checked || false;
-    // const symbolsChar = document.getElementById('defaultCheck4').checked || false;
+    // ULNS
 
-    // if (upperChar) {
-    //   comboOptions += 'U'
-    // }
     if (useUpper) {
       comboOptions += 'U'
     }
     if (useLower) {
       comboOptions += 'L'
     }
-    if (useSymbol) {
-      comboOptions += 'S'
-    }
     if (useNumber) {
       comboOptions += 'N'
     }
+    if (useSymbol) {
+      comboOptions += 'S'
+    }
 
+
+    console.log(`passwordLength: ${characterLength} comboOptions: ${comboOptions}`)
     // SET STATE
     setPasswordText(helperFuncs.createNewPassword(characterLength, comboOptions));
   }
