@@ -24,6 +24,12 @@ Generate passwords based on certain characteristics selected by the user.
 - [Password Generator by Florin Pop on Codepen](https://codepen.io/FlorinPop17/full/BaBePej)
 - [PasswordGenerator](https://passwordsgenerator.net)
 
+
+## Screenshot
+![OnlyPass - screeenshot](https://jcstang-s3.s3-us-west-1.amazonaws.com/img-assets/onlypass-react-screenshot.png "OnlyPass - password generator")
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
