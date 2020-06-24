@@ -8,33 +8,36 @@ export default function PasswordContainer(props) {
   // =============================================================
   const [passwordText, setPasswordText] = useState('');
   const [characterLength, setCharacterLength] = useState(16);
+  const [useUpper, setUseUpper] = useState(true);
+  const [useLower, setUseLower] = useState(true);
+  const [useNumber, setUseNumber] = useState(true);
+  const [useSymbol, setUseSymbol] = useState(true);
 
   const changeHandler = (event) => setPasswordText(event.target.value);
   const sliderChangeHandler = (event) => setCharacterLength(event.target.value);
+
 
   const submitHandler = (event) => {
     event.preventDefault();
     let comboOptions = '';
 
-    // TODO: rename id for the checkboxes
-    const upperChar = document.getElementById('defaultCheck1').checked || false;
-    const lowerChar = document.getElementById('defaultCheck2').checked || false;
-    const numbersChar = document.getElementById('defaultCheck3').checked || false;
-    const symbolsChar = document.getElementById('defaultCheck4').checked || false;
+    // ULNS
 
-    if (upperChar) {
+    if (useUpper) {
       comboOptions += 'U'
     }
-    if (lowerChar) {
+    if (useLower) {
       comboOptions += 'L'
     }
-    if (symbolsChar) {
-      comboOptions += 'S'
-    }
-    if (numbersChar) {
+    if (useNumber) {
       comboOptions += 'N'
     }
+    if (useSymbol) {
+      comboOptions += 'S'
+    }
 
+
+    console.log(`passwordLength: ${characterLength} comboOptions: ${comboOptions}`)
     // SET STATE
     setPasswordText(helperFuncs.createNewPassword(characterLength, comboOptions));
   }
@@ -54,30 +57,63 @@ export default function PasswordContainer(props) {
 
       {/* checkbox area */}
       <form className="form-checkbox text-left">
+
+        {/* upper checkbox */}
         <div className="form-check">
-          <input className="form-check-input" type="checkbox" id="defaultCheck1" />
+          <input
+            className="form-check-input"
+            type="checkbox"
+            id="defaultCheck1"
+            checked={useUpper}
+            onChange={() => setUseUpper(!useUpper)}
+          />
           <label className="form-check-label" htmlFor="defaultCheck1">
             Include uppercase letters
           </label>
         </div>
+
+        {/* lower checkbox */}
         <div className="form-check text-left">
-          <input className="form-check-input" type="checkbox" value="" id="defaultCheck2" />
+          <input
+            className="form-check-input"
+            type="checkbox"
+            id="defaultCheck2"
+            checked={useLower}
+            onChange={() => setUseLower(!useLower)}
+          />
           <label className="form-check-label" htmlFor="defaultCheck2">
             Include lowercase letters
           </label>
         </div>
+
+        {/* number checkbox */}
         <div className="form-check text-left">
-          <input className="form-check-input" type="checkbox" value="" id="defaultCheck3" />
+          <input
+            className="form-check-input"
+            type="checkbox"
+            id="defaultCheck3"
+            checked={useNumber}
+            onChange={() => setUseNumber(!useNumber)}
+          />
           <label className="form-check-label" htmlFor="defaultCheck3">
             Include Numbers
           </label>
         </div>
+
+        {/* symbol checkbox */}
         <div className="form-check text-left">
-          <input className="form-check-input" type="checkbox" value="" id="defaultCheck4" />
+          <input
+            className="form-check-input"
+            type="checkbox"
+            id="defaultCheck4"
+            checked={useSymbol}
+            onChange={() => setUseSymbol(!useSymbol)}
+          />
           <label className="form-check-label" htmlFor="defaultCheck4">
             Include Symbols
           </label>
         </div>
+
       </form>
 
 
