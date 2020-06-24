@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import './PasswordContainer.css';
 import helperFuncs from '../utils/helperFuncs';
-import copy from 'copy-to-clipboard';
+import Toast from 'react-bootstrap/Toast';
 
-export default function PasswordContainer() {
+export default function PasswordContainer(props) {
 
   // USE STATE
   // =============================================================
   const [passwordText, setPasswordText] = useState('');
   const [characterLength, setCharacterLength] = useState(0);
+  const [showA, setShowA] = useState(false);
+  const toggleShowA = () => setShowA(!showA);
 
   // const generateRandomPassword = () => {
   //   return helperFuncs.createNewPassword(characterLength);
@@ -30,23 +32,35 @@ export default function PasswordContainer() {
     setCharacterLength(passwordLength);
   }
 
-  const copyButtonHandler = (event) => {
-    // let copyValue = document.getElementById("copy-button");
-    // copyValue.select();
-    // copyValue.setSelectionRange(0, 99999);
-    // document.execCommand("copy");
-    let copyThing = document.getElementById('gen-password').value;
-    console.log(copyThing);
-    copy(copyThing);
+  // const copyButtonHandler = (event) => {
+  //   let copyValue = document.getElementById("gen-password");
+  //   copyValue.select();
+  //   copyValue.setSelectionRange(0, 99999);
+  //   document.execCommand("copy");
 
-    // alert('copied text: ' + copyValue.value);
+  //   //TODO: add a toast or something or tooltip
+  //   // toggleShowA();
+  //   props.toggleShowA();
 
-  }
+  // }
 
   // JSX - return statement
   // =============================================================
   return (
     <div className="container" id="password-container">
+      {/* <Toast show={showA} onClose={toggleShowA}>
+        <Toast.Header>
+          <img
+            src="holder.js/20x20?text=%20"
+            className="rounded mr-2"
+            alt=""
+          />
+          <strong className="mr-auto">Bootstrap</strong>
+          <small>11 mins ago</small>
+        </Toast.Header>
+        <Toast.Body>Woohoo, you're reading this text in a Toast!</Toast.Body>
+      </Toast> */}
+
       {/* slider */}
       <form>
         <div className="form-group">
@@ -62,7 +76,10 @@ export default function PasswordContainer() {
           <input onChange={changeHandler} type="text" className="form-control" id="gen-password" value={passwordText} placeholder="Password" />
         </div>
         <button type="submit" className="btn btn-primary mb-2">Generate Password</button>
-        <button type="button" className="btn btn-warning mb-2 ml-2" id="copy-button" onClick={copyButtonHandler}>Copy</button>
+        <button type="button" className="btn btn-warning mb-2 ml-2" id="copy-button" onClick={props.copyHandler}>Copy</button>
+
+
+
       </form>
     </div>
   );
