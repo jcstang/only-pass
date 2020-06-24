@@ -24,7 +24,16 @@ function App() {
     <div className="App">
       <nav className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <Toast show={showA} onClose={toggleShowA}>
+        <Toast
+          show={showA}
+          onClose={toggleShowA}
+          delay={3000}
+          autohide
+          style={{
+            position: 'absolute',
+            top: 0,
+            right: 0,
+          }}>
           <Toast.Header>
             <img
               src="holder.js/20x20?text=%20"
