@@ -2,7 +2,6 @@
 // * Helper funcs
 // * start with arrays of diff charaters
 // ***************************************************************************
-
 const specialCharacters = ['$', '@', '#', '!', '%'];
 const lowerCaseAlphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 const upperCaseAlphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
@@ -27,6 +26,7 @@ const nulArray = [...numberArray, ...upperCaseAlphabet, ...lowerCaseAlphabet];
 const usnArray = [...upperCaseAlphabet, ...specialCharacters, ...numberArray];
 const lsnArray = [...lowerCaseAlphabet, ...specialCharacters, ...numberArray];
 
+// exact same as allCharactersArray - but with consistent naming scheme
 const lsnuArray = [...lowerCaseAlphabet, ...specialCharacters, ...numberArray, ...upperCaseAlphabet];
 
 const getRandomInt = (maxRange) => {
@@ -138,7 +138,8 @@ const createNewPassword = (requestLength, logicString) => {
       //   craftedPasswordString += allCharactersArray[getRandomInt(allCharactersArray.length)];
       // }
       // break;
-      return loopToCreatePassword(requestLength, allCharactersArray);
+      // return loopToCreatePassword(requestLength, allCharactersArray);
+      return loopToCreatePassword(requestLength, lsnuArray);
   }
   // return craftedPasswordString;
 };

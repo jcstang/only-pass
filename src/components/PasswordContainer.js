@@ -8,24 +8,19 @@ export default function PasswordContainer(props) {
   // =============================================================
   const [passwordText, setPasswordText] = useState('');
   const [characterLength, setCharacterLength] = useState(16);
-  // const [showA, setShowA] = useState(false);
-  // const toggleShowA = () => setShowA(!showA);
-
-  // const generateRandomPassword = () => {
-  //   return helperFuncs.createNewPassword(characterLength);
-  // }
 
   const changeHandler = (event) => setPasswordText(event.target.value);
+  const sliderChangeHandler = (event) => setCharacterLength(event.target.value);
 
   const submitHandler = (event) => {
     event.preventDefault();
     let comboOptions = '';
+
+    // TODO: rename id for the checkboxes
     const upperChar = document.getElementById('defaultCheck1').checked || false;
     const lowerChar = document.getElementById('defaultCheck2').checked || false;
     const numbersChar = document.getElementById('defaultCheck3').checked || false;
     const symbolsChar = document.getElementById('defaultCheck4').checked || false;
-
-    // console.log(`U:${upperChar} L:${lowerChar} S:${symbolsChar} N:${numbersChar}`);
 
     if (upperChar) {
       comboOptions += 'U'
@@ -39,15 +34,9 @@ export default function PasswordContainer(props) {
     if (numbersChar) {
       comboOptions += 'N'
     }
-    // console.log(comboOptions);
+
+    // SET STATE
     setPasswordText(helperFuncs.createNewPassword(characterLength, comboOptions));
-  }
-
-  const sliderChangeHandler = (event) => {
-    // console.log(event.target.value);
-    const passwordLength = event.target.value;
-
-    setCharacterLength(passwordLength);
   }
 
   // JSX - return statement
@@ -63,6 +52,7 @@ export default function PasswordContainer(props) {
         </div>
       </form>
 
+      {/* checkbox area */}
       <form className="form-checkbox text-left">
         <div className="form-check">
           <input className="form-check-input" type="checkbox" id="defaultCheck1" />
