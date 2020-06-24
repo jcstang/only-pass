@@ -6,18 +6,19 @@ import Toast from 'react-bootstrap/Toast';
 
 function App() {
 
-  const [showA, setShowA] = useState(false);
-  const toggleShowA = () => setShowA(!showA);
+  const [showToastMessage, sethowToastMessage] = useState(false);
+  // const toggleToastMessage = () => sethowToastMessage(!showToastMessage);
 
   const copyHandler = (event) => {
     let copyValue = document.getElementById("gen-password");
-    console.log(copyValue.value);
+    // console.log(copyValue.value);
 
     copyValue.select();
     copyValue.setSelectionRange(0, 99999);
     document.execCommand("copy");
 
-    toggleShowA();
+    // toggleShowA();
+    sethowToastMessage(!showToastMessage);
   }
 
   return (
@@ -25,10 +26,11 @@ function App() {
       <nav className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <Toast
-          show={showA}
-          onClose={toggleShowA}
+          show={showToastMessage}
+          onClose={() => sethowToastMessage(!showToastMessage)}
           delay={3000}
           autohide
+          animation={false}
           style={{
             position: 'absolute',
             top: 0,

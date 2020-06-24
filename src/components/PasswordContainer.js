@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './PasswordContainer.css';
 import helperFuncs from '../utils/helperFuncs';
-import Toast from 'react-bootstrap/Toast';
 
 export default function PasswordContainer(props) {
 
@@ -9,8 +8,8 @@ export default function PasswordContainer(props) {
   // =============================================================
   const [passwordText, setPasswordText] = useState('');
   const [characterLength, setCharacterLength] = useState(0);
-  const [showA, setShowA] = useState(false);
-  const toggleShowA = () => setShowA(!showA);
+  // const [showA, setShowA] = useState(false);
+  // const toggleShowA = () => setShowA(!showA);
 
   // const generateRandomPassword = () => {
   //   return helperFuncs.createNewPassword(characterLength);

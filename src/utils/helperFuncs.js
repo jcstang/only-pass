@@ -23,9 +23,9 @@ const createNewPassword = (requestLength) => {
   }
 
   // console.log('we are inside create new password');
-  console.log(craftedPasswordString);
-  console.log(`here is craftedpasswordstring length: ${craftedPasswordString.length}`);
-  console.log(`here is requested length: ${requestLength}`)
+  // console.log(craftedPasswordString);
+  // console.log(`here is craftedpasswordstring length: ${craftedPasswordString.length}`);
+  // console.log(`here is requested length: ${requestLength}`);
 
   return craftedPasswordString;
 };
