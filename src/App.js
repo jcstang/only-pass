@@ -31,6 +31,7 @@ function App() {
           delay={3000}
           autohide
           animation={false}
+          id='main-toast'
           style={{
             position: 'absolute',
             top: 0,
