@@ -10,23 +10,22 @@ const numberArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 // ALL OF THE THINGS
 const lsnuArray = [...lowerCaseAlphabet, ...specialCharacters, ...numberArray, ...upperCaseAlphabet];
 
-// upper OR lower OR Symbol OR Number
 const uArray = [...upperCaseAlphabet];
-const lArray = [...lowerCaseAlphabet];
-const sArray = [...specialCharacters];
-const nArray = [...numberArray];
-
-// (upper AND lower) OR (upper AND Symbols) OR etc...
 const ulArray = [...upperCaseAlphabet, ...lowerCaseAlphabet];
 const usArray = [...upperCaseAlphabet, ...specialCharacters];
 const unArray = [...upperCaseAlphabet, ...numberArray];
+const ulsArray = [...upperCaseAlphabet, ...lowerCaseAlphabet, ...specialCharacters];
+const usnArray = [...upperCaseAlphabet, ...specialCharacters, ...numberArray];
+
+const lArray = [...lowerCaseAlphabet];
 const lsArray = [...lowerCaseAlphabet, ...specialCharacters];
+const lsnArray = [...lowerCaseAlphabet, ...specialCharacters, ...numberArray];
+
+const sArray = [...specialCharacters];
 const snArray = [...specialCharacters, ...numberArray];
 
-const ulsArray = [...upperCaseAlphabet, ...lowerCaseAlphabet, ...specialCharacters];
+const nArray = [...numberArray];
 const nulArray = [...numberArray, ...upperCaseAlphabet, ...lowerCaseAlphabet];
-const usnArray = [...upperCaseAlphabet, ...specialCharacters, ...numberArray];
-const lsnArray = [...lowerCaseAlphabet, ...specialCharacters, ...numberArray];
 
 
 const getRandomInt = (maxRange) => {
@@ -34,9 +33,9 @@ const getRandomInt = (maxRange) => {
   return Math.floor(Math.random() * Math.floor(maxRange));
 }
 
-const loopToCreatePassword = (requestLength, logicArray) => {
+const loopToCreatePassword = (passwordLength, logicArray) => {
   let craftedPasswordString = '';
-  for (let i = 0; i < requestLength; i++) {
+  for (let i = 0; i < passwordLength; i++) {
     craftedPasswordString += logicArray[getRandomInt(logicArray.length)];
   }
 
