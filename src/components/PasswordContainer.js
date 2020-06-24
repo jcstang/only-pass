@@ -19,27 +19,15 @@ export default function PasswordContainer(props) {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    let comboOptions = '';
 
-    // ULNS
+    const configString =
+      (useUpper ? 'U' : '')
+      + (useLower ? 'L' : '')
+      + (useNumber ? 'N' : '')
+      + (useSymbol ? 'S' : '').trim();
 
-    if (useUpper) {
-      comboOptions += 'U'
-    }
-    if (useLower) {
-      comboOptions += 'L'
-    }
-    if (useNumber) {
-      comboOptions += 'N'
-    }
-    if (useSymbol) {
-      comboOptions += 'S'
-    }
-
-
-    console.log(`passwordLength: ${characterLength} comboOptions: ${comboOptions}`)
     // SET STATE
-    setPasswordText(helperFuncs.createNewPassword(characterLength, comboOptions));
+    setPasswordText(helperFuncs.createNewPassword(characterLength, configString));
   }
 
   // JSX - return statement
