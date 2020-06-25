@@ -1,6 +1,4 @@
-# Password Generator
-
-**Tier:** 2-Intermediate
+# OnlyPass - Password Generator
 
 Generate passwords based on certain characteristics selected by the user.
 
