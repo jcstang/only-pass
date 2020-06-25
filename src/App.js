@@ -7,6 +7,7 @@ import Toast from 'react-bootstrap/Toast';
 function App() {
 
   const [showToastMessage, sethowToastMessage] = useState(false);
+  const [toastMsg, setToastMsg] = useState('');
   // const toggleToastMessage = () => sethowToastMessage(!showToastMessage);
 
   const copyHandler = (event) => {
@@ -18,6 +19,13 @@ function App() {
     document.execCommand("copy");
 
     // toggleShowA();
+    setToastMsg('Woohoo, password copied to the clipboard');
+    sethowToastMessage(!showToastMessage);
+  }
+
+  const toastWithMessage = (message) => {
+    // stuff here
+    setToastMsg('cool cool cool');
     sethowToastMessage(!showToastMessage);
   }
 
@@ -43,15 +51,16 @@ function App() {
               className="rounded mr-2"
               alt=""
             />
-            <strong className="mr-auto">Clipboard</strong>
+            <strong className="mr-auto">Message just for you</strong>
           </Toast.Header>
-          <Toast.Body>Woohoo, password copied to the clipboard</Toast.Body>
+          <Toast.Body>{toastMsg}</Toast.Body>
         </Toast>
         <h1>OnlyPass</h1>
         <h6 className="text-muted">The only password generator you will ever need.</h6>
       </nav>
       <PasswordContainer
         copyHandler={copyHandler}
+        toastWithMessage={toastWithMessage}
       />
     </div>
   );

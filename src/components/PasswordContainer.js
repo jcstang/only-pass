@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import './PasswordContainer.css';
 import helperFuncs from '../utils/helperFuncs';
+import zexbin from 'zxcvbn';
+import Badge from 'react-bootstrap/Badge';
+
 
 export default function PasswordContainer(props) {
 
@@ -19,6 +22,14 @@ export default function PasswordContainer(props) {
 
   const submitHandler = (event) => {
     event.preventDefault();
+
+    console.log('zexbin: ');
+    console.log(zexbin('Tr0ub4dour&3'));
+    console.log(zexbin('Tr0ub4dour&3').score);
+    console.log(zexbin('Tr0ub4dour&3').feedback);
+    zexbin('Tr0ub4dour&3').feedback.suggestions.forEach((element) => {
+      console.log(element);
+    });
 
     const configString =
       (useUpper ? 'U' : '')
@@ -106,13 +117,14 @@ export default function PasswordContainer(props) {
 
 
       {/* password generator */}
+      <h1>Password <Badge variant="secondary">New</Badge></h1>
       <form onSubmit={submitHandler} className="form justify-content-center">
         <div className="form-group mx-sm-3 mb-2">
           <label htmlFor="gen-password" className="sr-only">Password</label>
           <input onChange={changeHandler} type="text" className="form-control" id="gen-password" value={passwordText} placeholder="Password" />
         </div>
         <div className="form-group mx-sm-3 mb-2">
-          <button type="submit" className="btn btn-primary mb-2">Generate Password</button>
+          <button type="submit" className="btn btn-primary mb-2" onClick={props.toastWithMessage}>Generate Password</button>
           <button type="button" className="btn btn-warning mb-2 ml-2" id="copy-button" onClick={props.copyHandler}>Copy</button>
         </div>
       </form>
