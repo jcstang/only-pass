@@ -15,6 +15,7 @@ export default function PasswordContainer(props) {
   const [useLower, setUseLower] = useState(true);
   const [useNumber, setUseNumber] = useState(true);
   const [useSymbol, setUseSymbol] = useState(true);
+  const [passwordScore, setPasswordScore] = useState(0);
 
   const changeHandler = (event) => setPasswordText(event.target.value);
   const sliderChangeHandler = (event) => setCharacterLength(event.target.value);
@@ -23,22 +24,28 @@ export default function PasswordContainer(props) {
   const submitHandler = (event) => {
     event.preventDefault();
 
-    console.log('zexbin: ');
-    console.log(zexbin('Tr0ub4dour&3'));
-    console.log(zexbin('Tr0ub4dour&3').score);
-    console.log(zexbin('Tr0ub4dour&3').feedback);
-    zexbin('Tr0ub4dour&3').feedback.suggestions.forEach((element) => {
-      console.log(element);
-    });
-
+    // console.log('zexbin: ');
+    // console.log(zexbin('Tr0ub4dour&3'));
+    // console.log(zexbin('Tr0ub4dour&3').score);
+    // console.log(zexbin('Tr0ub4dour&3').feedback);
+    // zexbin('Tr0ub4dour&3').feedback.suggestions.forEach((element) => {
+    //   console.log(element);
+    // });
+    
     const configString =
-      (useUpper ? 'U' : '')
-      + (useLower ? 'L' : '')
-      + (useNumber ? 'N' : '')
-      + (useSymbol ? 'S' : '').trim();
-
+    (useUpper ? 'U' : '')
+    + (useLower ? 'L' : '')
+    + (useNumber ? 'N' : '')
+    + (useSymbol ? 'S' : '').trim();
+    
     // SET STATE
-    setPasswordText(helperFuncs.createNewPassword(characterLength, configString));
+    
+    const freshlyBakedPassword = helperFuncs.createNewPassword(characterLength, configString);
+
+    setPasswordScore(zexbin(freshlyBakedPassword).score);
+    console.log( zexbin(freshlyBakedPassword) );
+
+    setPasswordText(freshlyBakedPassword);
   }
 
   // JSX - return statement
@@ -117,11 +124,15 @@ export default function PasswordContainer(props) {
 
 
       {/* password generator */}
-      <h1>Password <Badge variant="secondary">New</Badge></h1>
       <form onSubmit={submitHandler} className="form justify-content-center">
         <div className="form-group mx-sm-3 mb-2">
           <label htmlFor="gen-password" className="sr-only">Password</label>
-          <input onChange={changeHandler} type="text" className="form-control" id="gen-password" value={passwordText} placeholder="Password" />
+          <div className="row">
+            <input onChange={changeHandler} type="text" className="form-control col-md-10" id="gen-password" value={passwordText} placeholder="Password" />
+            <div className="col-md-2">
+              <h2><Badge variant="secondary">Score | {passwordScore}</Badge></h2>
+            </div>
+          </div>
         </div>
         <div className="form-group mx-sm-3 mb-2">
           <button type="submit" className="btn btn-primary mb-2" onClick={props.toastWithMessage}>Generate Password</button>
