@@ -9,8 +9,8 @@
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1",
-    "zxcvbn": "^4.4.2"
+    "react-password-strength-bar": "^0.3.2",
+    "react-scripts": "3.4.1"
   },
   "scripts": {
     "start": "react-scripts start",

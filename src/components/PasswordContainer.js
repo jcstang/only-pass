@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import './PasswordContainer.css';
 import helperFuncs from '../utils/helperFuncs';
-import zexbin from 'zxcvbn';
-import Badge from 'react-bootstrap/Badge';
+import PasswordStrengthBar from 'react-password-strength-bar';
 
 
 export default function PasswordContainer(props) {
@@ -15,7 +14,6 @@ export default function PasswordContainer(props) {
   const [useLower, setUseLower] = useState(true);
   const [useNumber, setUseNumber] = useState(true);
   const [useSymbol, setUseSymbol] = useState(true);
-  const [passwordScore, setPasswordScore] = useState(0);
 
   const changeHandler = (event) => setPasswordText(event.target.value);
   const sliderChangeHandler = (event) => setCharacterLength(event.target.value);
@@ -23,14 +21,6 @@ export default function PasswordContainer(props) {
 
   const submitHandler = (event) => {
     event.preventDefault();
-
-    // console.log('zexbin: ');
-    // console.log(zexbin('Tr0ub4dour&3'));
-    // console.log(zexbin('Tr0ub4dour&3').score);
-    // console.log(zexbin('Tr0ub4dour&3').feedback);
-    // zexbin('Tr0ub4dour&3').feedback.suggestions.forEach((element) => {
-    //   console.log(element);
-    // });
     
     const configString =
     (useUpper ? 'U' : '')
@@ -38,13 +28,10 @@ export default function PasswordContainer(props) {
     + (useNumber ? 'N' : '')
     + (useSymbol ? 'S' : '').trim();
     
-    // SET STATE
-    
+    // * example input 'ULS' get passed into 2nd param, it describes using Upper and Lower and ymbols
     const freshlyBakedPassword = helperFuncs.createNewPassword(characterLength, configString);
-
-    setPasswordScore(zexbin(freshlyBakedPassword).score);
-    console.log( zexbin(freshlyBakedPassword) );
-
+    
+    // SET STATE
     setPasswordText(freshlyBakedPassword);
   }
 
@@ -121,6 +108,7 @@ export default function PasswordContainer(props) {
         </div>
 
       </form>
+      {/* end of checkbox area */}
 
 
       {/* password generator */}
@@ -130,7 +118,10 @@ export default function PasswordContainer(props) {
           <div className="row">
             <input onChange={changeHandler} type="text" className="form-control col-md-10" id="gen-password" value={passwordText} placeholder="Password" />
             <div className="col-md-2">
-              <h2><Badge variant="secondary">Score | {passwordScore}</Badge></h2>
+              <PasswordStrengthBar 
+                password={passwordText} 
+                minLength={10} 
+              />
             </div>
           </div>
         </div>
@@ -139,6 +130,9 @@ export default function PasswordContainer(props) {
           <button type="button" className="btn btn-warning mb-2 ml-2" id="copy-button" onClick={props.copyHandler}>Copy</button>
         </div>
       </form>
+
+      {/* score plus suggestions */}
+
 
     </div>
   );
