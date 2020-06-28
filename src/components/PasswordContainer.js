@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import './PasswordContainer.css';
 import helperFuncs from '../utils/helperFuncs';
-import zexbin from 'zxcvbn';
-import Badge from 'react-bootstrap/Badge';
 import PasswordStrengthBar from 'react-password-strength-bar';
 
 
