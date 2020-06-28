@@ -16,8 +16,7 @@ export default function PasswordContainer(props) {
   const [useLower, setUseLower] = useState(true);
   const [useNumber, setUseNumber] = useState(true);
   const [useSymbol, setUseSymbol] = useState(true);
-  const [passwordScore, setPasswordScore] = useState(0);
-  // const [suggestionArray, setSuggestionArray] = useState([]);
+  // const [passwordScore, setPasswordScore] = useState(0);
 
   const changeHandler = (event) => setPasswordText(event.target.value);
   const sliderChangeHandler = (event) => setCharacterLength(event.target.value);
@@ -39,13 +38,13 @@ export default function PasswordContainer(props) {
     // what kind of object comes back?
     // console.log(Object.prototype.toString.call(zexbin(freshlyBakedPassword)));
     // get array of keys
-    const propertyNames = Object.getOwnPropertyNames(zexbin(freshlyBakedPassword));
-    console.log(propertyNames);
+    // const propertyNames = Object.getOwnPropertyNames(zexbin(freshlyBakedPassword));
+    // console.log(propertyNames);
     // demo testing above. might not need to use it.
     
     // SET STATE
     // password sent to zexbin
-    setPasswordScore( zexbin(freshlyBakedPassword).score );
+    // setPasswordScore( zexbin(freshlyBakedPassword).score );
     setPasswordText(freshlyBakedPassword);
   }
 
