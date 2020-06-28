@@ -132,12 +132,11 @@ export default function PasswordContainer(props) {
           <div className="row">
             <input onChange={changeHandler} type="text" className="form-control col-md-10" id="gen-password" value={passwordText} placeholder="Password" />
             <div className="col-md-2">
-              <h2><Badge variant="secondary">Strength: | {passwordScore}</Badge></h2>
-              <PasswordStrengthBar password={passwordText} />
+              <PasswordStrengthBar 
+                password={passwordText} 
+                minLength={10} 
+              />
             </div>
-          </div>
-          <div className="row justify-content-center">
-            <PasswordStrengthBar password={passwordText} />
           </div>
         </div>
         <div className="form-group mx-sm-3 mb-2">
