@@ -3,6 +3,7 @@ import './PasswordContainer.css';
 import helperFuncs from '../utils/helperFuncs';
 import zexbin from 'zxcvbn';
 import Badge from 'react-bootstrap/Badge';
+import PasswordStrengthBar from 'react-password-strength-bar';
 
 
 export default function PasswordContainer(props) {
@@ -131,8 +132,12 @@ export default function PasswordContainer(props) {
           <div className="row">
             <input onChange={changeHandler} type="text" className="form-control col-md-10" id="gen-password" value={passwordText} placeholder="Password" />
             <div className="col-md-2">
-              <h2><Badge variant="secondary">Score | {passwordScore}</Badge></h2>
+              <h2><Badge variant="secondary">Strength: | {passwordScore}</Badge></h2>
+              <PasswordStrengthBar password={passwordText} />
             </div>
+          </div>
+          <div className="row justify-content-center">
+            <PasswordStrengthBar password={passwordText} />
           </div>
         </div>
         <div className="form-group mx-sm-3 mb-2">

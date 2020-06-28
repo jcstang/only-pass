@@ -8676,6 +8676,13 @@ react-overlays@^3.1.2:
     uncontrollable "^7.0.0"
     warning "^4.0.3"
 
+react-password-strength-bar@^0.3.2:
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/react-password-strength-bar/-/react-password-strength-bar-0.3.2.tgz#503012ef4f3d6a6c702d63b34c6596616807f2ac"
+  integrity sha512-ADJZVKhdDZVELGyrc0DHSyTIJL4A/9z++rUi6Un426bQJVFPv5esp3mZdZhraet/PwCOGJRMKyjGf5QgpKvX7w==
+  dependencies:
+    zxcvbn "4.4.2"
+
 react-scripts@3.4.1:
   version "3.4.1"
   resolved "https://registry.yarnpkg.com/react-scripts/-/react-scripts-3.4.1.tgz#f551298b5c71985cc491b9acf3c8e8c0ae3ada0a"
@@ -10966,7 +10973,7 @@ yargs@^13.3.0:
     y18n "^4.0.0"
     yargs-parser "^13.1.2"
 
-zxcvbn@^4.4.2:
+zxcvbn@4.4.2, zxcvbn@^4.4.2:
   version "4.4.2"
   resolved "https://registry.yarnpkg.com/zxcvbn/-/zxcvbn-4.4.2.tgz#28ec17cf09743edcab056ddd8b1b06262cc73c30"
   integrity sha1-KOwXzwl0PtyrBW3dixsGJizHPDA=
