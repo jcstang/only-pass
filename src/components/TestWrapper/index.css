@@ -1,0 +1,7 @@
+.FancyWrapper {
+  border: 10px solid;
+}
+
+.FancyWrapper-blue {
+  border-color: blue;
+}
