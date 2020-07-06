@@ -15,13 +15,13 @@ export default function PasswordContainer(props) {
   const [useNumber, setUseNumber] = useState(true);
   const [useSymbol, setUseSymbol] = useState(true);
 
+  // handler functions
+  // =============================================================
   const changeHandler = (event) => setPasswordText(event.target.value);
   const sliderChangeHandler = (event) => setCharacterLength(event.target.value);
 
-
   const submitHandler = (event) => {
     event.preventDefault();
-    
     const configString =
     (useUpper ? 'U' : '')
     + (useLower ? 'L' : '')

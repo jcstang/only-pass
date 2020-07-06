@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import PasswordContainer from './components/PasswordContainer';
-import Toast from 'react-bootstrap/Toast';
+import React, { useState } from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import PasswordContainer from "./components/PasswordContainer";
+import Toast from "react-bootstrap/Toast";
+import TestWrapper from "./components/TestWrapper";
 
 function App() {
-
   const [showToastMessage, sethowToastMessage] = useState(false);
-  const [toastMsg, setToastMsg] = useState('');
+  const [toastMsg, setToastMsg] = useState("");
   // const toggleToastMessage = () => sethowToastMessage(!showToastMessage);
 
   const copyHandler = (event) => {
@@ -19,15 +19,15 @@ function App() {
     document.execCommand("copy");
 
     // toggleShowA();
-    setToastMsg('Woohoo, password copied to the clipboard');
+    setToastMsg("Woohoo, password copied to the clipboard");
     sethowToastMessage(!showToastMessage);
-  }
+  };
 
   const toastWithMessage = (message) => {
     // stuff here
-    setToastMsg('cool cool cool');
+    setToastMsg("cool cool cool");
     sethowToastMessage(!showToastMessage);
-  }
+  };
 
   return (
     <div className="App">
@@ -39,12 +39,13 @@ function App() {
           delay={3000}
           autohide
           animation={false}
-          id='main-toast'
+          id="main-toast"
           style={{
-            position: 'absolute',
+            position: "absolute",
             top: 0,
             right: 0,
-          }}>
+          }}
+        >
           <Toast.Header>
             <img
               src="holder.js/20x20?text=%20"
@@ -56,12 +57,16 @@ function App() {
           <Toast.Body>{toastMsg}</Toast.Body>
         </Toast>
         <h1>OnlyPass</h1>
-        <h6 className="text-muted">The only password generator you will ever need.</h6>
+        <h6 className="text-muted">
+          The only password generator you will ever need.
+        </h6>
       </nav>
-      <PasswordContainer
-        copyHandler={copyHandler}
-        toastWithMessage={toastWithMessage}
-      />
+      <TestWrapper color="blue">
+        <PasswordContainer
+          copyHandler={copyHandler}
+          toastWithMessage={toastWithMessage}
+        />
+      </TestWrapper>
     </div>
   );
 }
