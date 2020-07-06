@@ -3,7 +3,6 @@ import logo from "./logo.svg";
 import "./App.css";
 import PasswordContainer from "./components/PasswordContainer";
 import Toast from "react-bootstrap/Toast";
-import TestWrapper from "./components/TestWrapper";
 
 function App() {
   const [showToastMessage, sethowToastMessage] = useState(false);
@@ -61,12 +60,10 @@ function App() {
           The only password generator you will ever need.
         </h6>
       </nav>
-      <TestWrapper color="blue">
-        <PasswordContainer
-          copyHandler={copyHandler}
-          toastWithMessage={toastWithMessage}
-        />
-      </TestWrapper>
+      <PasswordContainer
+        copyHandler={copyHandler}
+        toastWithMessage={toastWithMessage}
+      />
     </div>
   );
 }
