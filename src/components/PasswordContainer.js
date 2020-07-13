@@ -27,11 +27,17 @@ export default function PasswordContainer(props) {
       (useSymbol ? "S" : "").trim();
     //console.log(`config string: ${configString}`);
 
-    // * example input 'ULS' get passed into 2nd param, it describes using Upper and Lower and ymbols
+    // * example input 'ULS' get passed into 2nd param, it describes using Upper and Lower and symbols
     const freshlyBakedPassword = helperFuncs.createNewPassword(
       characterLength,
       configString
     );
+
+    // FIXME: password generation leaves out user options
+    // FIXME: example: user has lower, symbol, & number selected (no uppercase selected)
+    // FIXME: right now a pool gets created on the checkboxes. so it becomes OPEN to be
+    // FIXME: randomly selected BUT doesn't guarnatee it. ALSO checkbox items are showing up when unchecked
+    // FIXME: tl;dr uppercase still shows up even when unchecked. "Hey, I selected to have a symbol in my password, where is the symbol?????".
 
     // SET STATE
     setPasswordText(freshlyBakedPassword);
