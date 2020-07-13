@@ -113,6 +113,7 @@ const createNewPassword = (requestLength, logicString) => {
   // console.log(`inside of createNewPassword ${requestLength}, ${logicString}`);
 
   // FIXME: problem: symbols don't always show up, outcome: when a value is selected like "Include symbols" there SHOULD be a symbol.
+  console.log(`logicString: ${logicString}`);
 
   switch (logicString) {
     case "U":
