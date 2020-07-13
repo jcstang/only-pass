@@ -155,6 +155,27 @@ const createNewPassword = (requestLength, logicString) => {
   }
 };
 
+const createNewPassword2 = (requestLength, config) => {
+  // const configObject = {
+  //   upperCase: false,
+  //   lowerCase: true,
+  //   symbols: true,
+  //   numbers: true
+  // };
+
+  if (
+    !config.upperCase &&
+    config.lowerCase &&
+    config.symbols &&
+    config.numbers
+  ) {
+    return loopToCreatePassword(requestLength, lsnArray);
+  }
+
+  return "";
+};
+
 module.exports = {
   createNewPassword: createNewPassword,
+  createNewPassword2: createNewPassword2,
 };
