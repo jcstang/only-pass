@@ -2,7 +2,7 @@
 // * Helper funcs
 // * start with arrays of diff charaters
 // ***************************************************************************
-const specialCharacters = ["$", "@", "#", "!", "%"];
+const specialCharacters = ["$", "@", "#", "!", "%", "^", "*"];
 const lowerCaseAlphabet = [
   "a",
   "b",
@@ -113,16 +113,16 @@ const createNewPassword = (requestLength, logicString) => {
   // console.log(`inside of createNewPassword ${requestLength}, ${logicString}`);
 
   // FIXME: problem: symbols don't always show up, outcome: when a value is selected like "Include symbols" there SHOULD be a symbol.
+  console.log(`logicString: ${logicString}`);
 
+  // ULNS
   switch (logicString) {
     case "U":
       return loopToCreatePassword(requestLength, uArray);
-    case "LU":
     case "UL":
       return loopToCreatePassword(requestLength, ulArray);
     case "ULS":
       return loopToCreatePassword(requestLength, ulsArray);
-    case "SU":
     case "US":
       return loopToCreatePassword(requestLength, usArray);
     case "USN":
@@ -138,6 +138,7 @@ const createNewPassword = (requestLength, logicString) => {
     case "NL":
     case "LN":
       return loopToCreatePassword(requestLength, lnArray);
+    case "LNS":
     case "LSN":
       return loopToCreatePassword(requestLength, lsnArray);
     case "S":
@@ -151,10 +152,52 @@ const createNewPassword = (requestLength, logicString) => {
     case "NUL":
       return loopToCreatePassword(requestLength, nulArray);
     default:
+      console.log(`DEFAULT PASSWORD GENERATION!`);
       return loopToCreatePassword(requestLength, lsnuArray);
+  }
+};
+
+const createNewPassword2 = (requestLength, config) => {
+  // const configObject = {
+  //   upperCase: false,
+  //   lowerCase: true,
+  //   symbols: true,
+  //   numbers: true
+  // };
+  const useUpperCase = config.upperCase;
+  const useLowerCase = config.lowerCase;
+  const useSymbols = config.symbols;
+  const useNumbers = config.numbers;
+
+  const U = useUpperCase && !useLowerCase && !useSymbols && !useNumbers;
+  const UL = useUpperCase && useLowerCase && !useSymbols && !useNumbers;
+  const USL = useUpperCase && useLowerCase && useSymbols && !useNumbers;
+  const US = useUpperCase && !useLowerCase && useSymbols && !useNumbers;
+  const USN = useUpperCase && !useLowerCase && !useSymbols && !useNumbers;
+  const UN = useUpperCase && !useLowerCase && !useSymbols && useNumbers;
+  const ULN = useUpperCase && useLowerCase && !useSymbols && useNumbers;
+
+  if (useUpperCase) {
+    // TODO: all options with 'U'
+    // U, UL/LU, ULS, SU/US, USN, NU/UN, ULN/NUL
+    // // U
+    // if(!useLowerCase && !useSymbols && !useNumbers) {
+    //   // return U
+    //   return loopToCreatePassword(requestLength, uArray);
+    // }
+    // // UL/LU
+    // if(useLowerCase && ) {
+    //   return loopToCreatePassword(requestLength, ulArray);
+    // }
+    // ULS
+    // SU/US
+    // USN
+    // NU/UN
+    // ULN/NUL
   }
 };
 
 module.exports = {
   createNewPassword: createNewPassword,
+  createNewPassword2: createNewPassword2,
 };
