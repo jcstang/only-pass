@@ -162,17 +162,80 @@ const createNewPassword2 = (requestLength, config) => {
   //   symbols: true,
   //   numbers: true
   // };
+  const useUpperCase = config.upperCase;
+  const useLowerCase = config.lowerCase;
+  const useSymbols = config.symbols;
+  const useNumbers = config.numbers;
 
-  if (
-    !config.upperCase &&
-    config.lowerCase &&
-    config.symbols &&
-    config.numbers
-  ) {
-    return loopToCreatePassword(requestLength, lsnArray);
+  const U = (
+    useUpperCase &&
+    !useLowerCase &&
+    !useSymbols &&
+    !useNumbers
+  );
+  const UL = (
+    useUpperCase &&
+    useLowerCase &&
+    !useSymbols &&
+    !useNumbers
+  );
+  const USL = (
+    useUpperCase &&
+    useLowerCase &&
+    useSymbols &&
+    !useNumbers
+  );
+  const US = (
+    useUpperCase &&
+    !useLowerCase &&
+    useSymbols &&
+    !useNumbers
+  );
+  const USN = (
+    useUpperCase &&
+    !useLowerCase &&
+    !useSymbols &&
+    !useNumbers
+  );
+  const UN = (
+    useUpperCase &&
+    !useLowerCase &&
+    !useSymbols &&
+    useNumbers
+  );
+  const ULN = (
+    useUpperCase &&
+    useLowerCase &&
+    !useSymbols &&
+    useNumbers
+  );
+
+
+  if (useUpperCase) {
+    // TODO: all options with 'U'
+    // U, UL/LU, ULS, SU/US, USN, NU/UN, ULN/NUL
+
+    // U
+    if(!useLowerCase && !useSymbols && !useNumbers) {
+      // return U
+      return loopToCreatePassword(requestLength, uArray);
+    }
+    // UL/LU
+    if(useLowerCase && ) {
+      return loopToCreatePassword(requestLength, ulArray);
+    }
+    // ULS
+
+    // SU/US
+
+    // USN
+
+    // NU/UN
+
+    // ULN/NUL
+
   }
 
-  return "";
 };
 
 module.exports = {

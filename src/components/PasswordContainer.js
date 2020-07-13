@@ -41,11 +41,13 @@ export default function PasswordContainer(props) {
       configString
     );
 
+    // ************************************************************
     const freshPassword = helperFuncs.createNewPassword2(
       characterLength,
       configObject
     );
     console.log(`fresh password: ${freshPassword}`);
+    // ************************************************************
 
     // SET STATE
     setPasswordText(freshlyBakedPassword);
