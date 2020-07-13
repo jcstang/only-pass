@@ -13,14 +13,6 @@ export default function PasswordContainer(props) {
   const [useNumber, setUseNumber] = useState(true);
   const [useSymbol, setUseSymbol] = useState(true);
 
-  // configObject
-  const configObject = {
-    upperCase: useUpper,
-    lowerCase: useLower,
-    symbols: useSymbol,
-    numbers: useNumber,
-  };
-
   // handler functions
   // =============================================================
   const changeHandler = (event) => setPasswordText(event.target.value);
@@ -33,7 +25,7 @@ export default function PasswordContainer(props) {
       (useLower ? "L" : "") +
       (useNumber ? "N" : "") +
       (useSymbol ? "S" : "").trim();
-    console.log(`config string: ${configString}`);
+    //console.log(`config string: ${configString}`);
 
     // * example input 'ULS' get passed into 2nd param, it describes using Upper and Lower and ymbols
     const freshlyBakedPassword = helperFuncs.createNewPassword(
