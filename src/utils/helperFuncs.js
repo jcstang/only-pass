@@ -2,7 +2,7 @@
 // * Helper funcs
 // * start with arrays of diff charaters
 // ***************************************************************************
-const specialCharacters = ["$", "@", "#", "!", "%"];
+const specialCharacters = ["$", "@", "#", "!", "%", "^", "*"];
 const lowerCaseAlphabet = [
   "a",
   "b",
@@ -115,15 +115,14 @@ const createNewPassword = (requestLength, logicString) => {
   // FIXME: problem: symbols don't always show up, outcome: when a value is selected like "Include symbols" there SHOULD be a symbol.
   console.log(`logicString: ${logicString}`);
 
+  // ULNS
   switch (logicString) {
     case "U":
       return loopToCreatePassword(requestLength, uArray);
-    case "LU":
     case "UL":
       return loopToCreatePassword(requestLength, ulArray);
     case "ULS":
       return loopToCreatePassword(requestLength, ulsArray);
-    case "SU":
     case "US":
       return loopToCreatePassword(requestLength, usArray);
     case "USN":
@@ -139,6 +138,7 @@ const createNewPassword = (requestLength, logicString) => {
     case "NL":
     case "LN":
       return loopToCreatePassword(requestLength, lnArray);
+    case "LNS":
     case "LSN":
       return loopToCreatePassword(requestLength, lsnArray);
     case "S":
@@ -152,6 +152,7 @@ const createNewPassword = (requestLength, logicString) => {
     case "NUL":
       return loopToCreatePassword(requestLength, nulArray);
     default:
+      console.log(`DEFAULT PASSWORD GENERATION!`);
       return loopToCreatePassword(requestLength, lsnuArray);
   }
 };

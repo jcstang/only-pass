@@ -5,15 +5,15 @@ const configObject = {
   upperCase: false,
   lowerCase: true,
   symbols: true,
-  numbers: true
+  numbers: true,
 };
 
 describe("correct password output", () => {
-  const configArray = ["LNS", "LN", "S", "SN", "N"];
+  const configArray = ["LNS", "LN", "S", "SN", "N", "ULNS"];
   // * example input 'ULS' get passed into 2nd param, it describes using Upper and Lower and ymbols
   const freshlyBakedPassword = helperFuncs.createNewPassword(
     CHAR_LENGTH,
-    configArray[0]
+    configArray[5]
   );
 
   it("length should match", () => {
@@ -25,18 +25,19 @@ describe("correct password output", () => {
   });
 
   it("should be a valid password", () => {
-    expect(freshlyBakedPassword).toMatch(generateRegEx());
+    expect(freshlyBakedPassword).toMatch(generateRegEx(CHAR_LENGTH));
   });
 });
 
-const generateRegEx = (length, configString) => {
+const generateRegEx = (length) => {
   let regExWithVariable = "";
 
-  if (configString === "LNS") {
-    regExWithVariable = `^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$^+=!*()@%&]).{${length},}$`;
-    return new RegExp(regExWithVariable, "g");
-  }
+  // if (configString === "LNS") {
+  //   regExWithVariable = `^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$^+=!*()@%&]).{${length},}$`;
+  //   return new RegExp(regExWithVariable, "g");
+  // }
 
-  regExWithVariable = `^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$^+=!*()@%&]).{${length},}$`;
+  regExWithVariable = `^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[#$^+=!*()@%&]).{${length},}$`;
+  console.log(regExWithVariable);
   return new RegExp(regExWithVariable, "g");
 };
