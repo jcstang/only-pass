@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./PasswordContainer.css";
-import helperFuncs from "../utils/helperFuncs";
+// import helperFuncs from "../utils/helperFuncs";
 import PasswordStrengthBar from "react-password-strength-bar";
 import generator from "generate-password";
 
@@ -21,11 +21,11 @@ export default function PasswordContainer(props) {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    const configString =
-      (useUpper ? "U" : "") +
-      (useLower ? "L" : "") +
-      (useNumber ? "N" : "") +
-      (useSymbol ? "S" : "").trim();
+    // const configString =
+    //   (useUpper ? "U" : "") +
+    //   (useLower ? "L" : "") +
+    //   (useNumber ? "N" : "") +
+    //   (useSymbol ? "S" : "").trim();
     //console.log(`config string: ${configString}`);
 
     // * example input 'ULS' get passed into 2nd param, it describes using Upper and Lower and symbols
