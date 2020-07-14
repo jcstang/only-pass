@@ -109,12 +109,16 @@ const getRandomSymbol = (symbolArray) => {
   return symbolArray[getRandomInt(symbolArray.length)];
 };
 
-const generators = {
-  getUpper: getRandomUpperLetter,
-};
+// const generators = {
+//   getUpper: getRandomUpperLetter,
+//   getLower: getRandomLowerLetter,
+//   getNumber: getRandomNumber,
+//   getSymbol: getRandomSymbol
+// };
 
 const curateCustomPassword = (length, config) => {
   let password = "";
+  // let lettersLeft = length;
   // const sampleConfig = {
   //   upper: true,
   //   lower: true,
@@ -124,12 +128,44 @@ const curateCustomPassword = (length, config) => {
 
   // TODO: START HERE
   // TODO: check the config object for which functions to use.
+  console.log(`keys for the object ${Object.keys(config)}`);
+  console.log(`values for the object ${Object.values(config)}`);
+  console.log(Object.values(config));
 
-  for (let i = 0; i < length; i++) {
-    // generate password here
-    // if sampleConfig keys are all true
-    password += generators.getUpper(upperCaseAlphabet);
+  // for (const key in config) {
+  //   if (config.hasOwnProperty(key)) {
+  //     const element = config[key];
+  //     console.log(element);
+  //     // true, true, true, false
+  //   }
+  // }
+
+  //******* IF you have everything checked */
+  while (password.length < 4) {
+    if (config.upper && config.lower && config.number && config.symbol) {
+      password += getRandomUpperLetter(upperCaseAlphabet);
+      password += getRandomLowerLetter(lowerCaseAlphabet);
+      password += getRandomNumber(numberArray);
+      password += getRandomSymbol(specialCharacters);
+    }
+
+    // password += getRandomSymbol(specialCharacters);
   }
+
+  // main for loop for length of password
+  // for (let i = 0; i < length; i++) {
+  //   // generate password here
+  //   // if sampleConfig keys are all true
+  //   // password += generators.getUpper(upperCaseAlphabet);
+  //   if (config.upper && config.lower && config.number && config.symbol) {
+  //     console.log("so ALL are true huh?");
+  //     password +=
+  //       getRandomUpperLetter() +
+  //       getRandomLowerLetter() +
+  //       getRandomNumber() +
+  //       getRandomSymbol();
+  //   }
+  // }
 
   return password;
 };
@@ -154,7 +190,7 @@ const createNewPassword = (requestLength, logicString) => {
   );
 
   console.log(
-    `here is curate; ${curateCustomPassword(16, {
+    `here is curateCustomPassword: ${curateCustomPassword(16, {
       upper: true,
       lower: true,
       number: true,
@@ -166,10 +202,10 @@ const createNewPassword = (requestLength, logicString) => {
   // U, UL, ULS, US, USN, UN, L, LS, LSN, LSNU, S, SN, N, NUL, ULNS
   // console.log(`inside of createNewPassword ${requestLength}, ${logicString}`);
 
-  // FIXME: problem: symbols don't always show up, outcome: when a value is selected like "Include symbols" there SHOULD be a symbol.
-  console.log(`logicString: ${logicString}`);
-  console.log(``);
+  // console.log(`logicString: ${logicString}`);
+  // console.log(``);
 
+  // FIXME: problem: symbols don't always show up, outcome: when a value is selected like "Include symbols" there SHOULD be a symbol.
   // ULNS
   switch (logicString) {
     case "U":
