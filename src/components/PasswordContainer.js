@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./PasswordContainer.css";
 import helperFuncs from "../utils/helperFuncs";
 import PasswordStrengthBar from "react-password-strength-bar";
+import generator from "generate-password";
 
 export default function PasswordContainer(props) {
   // USE STATE
@@ -28,10 +29,20 @@ export default function PasswordContainer(props) {
     //console.log(`config string: ${configString}`);
 
     // * example input 'ULS' get passed into 2nd param, it describes using Upper and Lower and symbols
-    const freshlyBakedPassword = helperFuncs.createNewPassword(
-      characterLength,
-      configString
-    );
+    // const freshlyBakedPassword = helperFuncs.createNewPassword(
+    //   characterLength,
+    //   configString
+    // );
+
+    const passwordThingy = generator.generate({
+      length: characterLength,
+      uppercase: useUpper,
+      lowercase: useLower,
+      numbers: useNumber,
+      symbols: useSymbol,
+    });
+
+    setPasswordText(passwordThingy);
 
     // FIXME: password generation leaves out user options
     // FIXME: example: user has lower, symbol, & number selected (no uppercase selected)
@@ -40,7 +51,7 @@ export default function PasswordContainer(props) {
     // FIXME: tl;dr uppercase still shows up even when unchecked. "Hey, I selected to have a symbol in my password, where is the symbol?????".
 
     // SET STATE
-    setPasswordText(freshlyBakedPassword);
+    // setPasswordText(freshlyBakedPassword);
   };
 
   // JSX - return statement
