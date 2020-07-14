@@ -1,12 +1,12 @@
 import helperFuncs from "./helperFuncs";
 const CHAR_LENGTH = 16;
 
-const configObject = {
-  upperCase: false,
-  lowerCase: true,
-  symbols: true,
-  numbers: true,
-};
+// const configObject = {
+//   upperCase: false,
+//   lowerCase: true,
+//   symbols: true,
+//   numbers: true,
+// };
 
 describe("correct password output", () => {
   const configArray = ["LNS", "LN", "S", "SN", "N", "ULNS"];
