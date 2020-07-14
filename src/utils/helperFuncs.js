@@ -93,21 +93,32 @@ const snArray = [...specialCharacters, ...numberArray];
 const nArray = [...numberArray];
 const nulArray = [...numberArray, ...upperCaseAlphabet, ...lowerCaseAlphabet];
 
-const getRandomLowerLetter = (lowerArray) => {
-  return lowerArray[getRandomInt(lowerArray.length)];
+const getRandomLowerLetter = () => {
+  // return lowerArray[getRandomInt(lowerArray.length)];
+  return lowerCaseAlphabet[getRandomInt(lowerCaseAlphabet.length)];
 };
 
-const getRandomUpperLetter = (upperArray) => {
-  return upperArray[getRandomInt(upperArray.length)];
+const getRandomUpperLetter = () => {
+  // return upperArray[getRandomInt(upperArray.length)];
+  return upperCaseAlphabet[getRandomInt(upperCaseAlphabet.length)];
 };
 
-const getRandomNumber = (numArray) => {
-  return numArray[getRandomInt(numArray.length)];
+const getRandomNumber = () => {
+  // return numArray[getRandomInt(numArray.length)];
+  return numberArray[getRandomInt(numberArray.length)];
 };
 
-const getRandomSymbol = (symbolArray) => {
-  return symbolArray[getRandomInt(symbolArray.length)];
+const getRandomSymbol = () => {
+  // return symbolArray[getRandomInt(symbolArray.length)];
+  return specialCharacters[getRandomInt(specialCharacters.length)];
 };
+
+const listOfFunctions = [
+  getRandomUpperLetter,
+  getRandomLowerLetter,
+  getRandomNumber,
+  getRandomSymbol,
+];
 
 // const generators = {
 //   getUpper: getRandomUpperLetter,
@@ -116,55 +127,65 @@ const getRandomSymbol = (symbolArray) => {
 //   getSymbol: getRandomSymbol
 // };
 
+// TODO: get this function ready to replace the other password generator
 const curateCustomPassword = (length, config) => {
   let password = "";
-  // let lettersLeft = length;
-  // const sampleConfig = {
-  //   upper: true,
-  //   lower: true,
-  //   number: true,
-  //   symbol: true,
-  // };
 
   // TODO: START HERE
   // TODO: check the config object for which functions to use.
-  console.log(`keys for the object ${Object.keys(config)}`);
-  console.log(`values for the object ${Object.values(config)}`);
-  console.log(Object.values(config));
-
-  // for (const key in config) {
-  //   if (config.hasOwnProperty(key)) {
-  //     const element = config[key];
-  //     console.log(element);
-  //     // true, true, true, false
-  //   }
-  // }
 
   //******* IF you have everything checked */
-  while (password.length < 4) {
-    if (config.upper && config.lower && config.number && config.symbol) {
-      password += getRandomUpperLetter(upperCaseAlphabet);
-      password += getRandomLowerLetter(lowerCaseAlphabet);
-      password += getRandomNumber(numberArray);
-      password += getRandomSymbol(specialCharacters);
+  if (config.upper && config.lower && config.number && config.symbol) {
+    while (password.length < 4) {
+      password += getRandomUpperLetter();
+      password += getRandomLowerLetter();
+      password += getRandomNumber();
+      password += getRandomSymbol();
     }
-
-    // password += getRandomSymbol(specialCharacters);
   }
 
-  // main for loop for length of password
-  // for (let i = 0; i < length; i++) {
-  //   // generate password here
-  //   // if sampleConfig keys are all true
-  //   // password += generators.getUpper(upperCaseAlphabet);
+  if (config.upper && config.lower && config.number && !config.symbol) {
+    const ulnFuncs = [
+      getRandomUpperLetter,
+      getRandomLowerLetter,
+      getRandomNumber,
+    ];
+    const selectedFunction = ulnFuncs[getRandomInt(ulnFuncs.length)];
+
+    password += selectedFunction();
+  }
+
+  while (password.length < length) {
+    const ulnFuncs = [
+      getRandomUpperLetter,
+      getRandomLowerLetter,
+      getRandomNumber,
+    ];
+
+    if (config.upper && config.lower && config.number && !config.symbol) {
+      //stuff
+      const selectedFunction = ulnFuncs[getRandomInt(ulnFuncs.length)];
+      password += selectedFunction();
+    }
+  }
+
+  // default password generator
+  // =============================================================
+  while (password.length < length) {
+    const selectedFunction =
+      listOfFunctions[getRandomInt(listOfFunctions.length)];
+    password += selectedFunction();
+  }
+
+  // while (password.length < 4) {
   //   if (config.upper && config.lower && config.number && config.symbol) {
-  //     console.log("so ALL are true huh?");
-  //     password +=
-  //       getRandomUpperLetter() +
-  //       getRandomLowerLetter() +
-  //       getRandomNumber() +
-  //       getRandomSymbol();
+  //     password += getRandomUpperLetter(upperCaseAlphabet);
+  //     password += getRandomLowerLetter(lowerCaseAlphabet);
+  //     password += getRandomNumber(numberArray);
+  //     password += getRandomSymbol(specialCharacters);
   //   }
+
+  //   // password += getRandomSymbol(specialCharacters);
   // }
 
   return password;
