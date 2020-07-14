@@ -93,6 +93,47 @@ const snArray = [...specialCharacters, ...numberArray];
 const nArray = [...numberArray];
 const nulArray = [...numberArray, ...upperCaseAlphabet, ...lowerCaseAlphabet];
 
+const getRandomLowerLetter = (lowerArray) => {
+  return lowerArray[getRandomInt(lowerArray.length)];
+};
+
+const getRandomUpperLetter = (upperArray) => {
+  return upperArray[getRandomInt(upperArray.length)];
+};
+
+const getRandomNumber = (numArray) => {
+  return numArray[getRandomInt(numArray.length)];
+};
+
+const getRandomSymbol = (symbolArray) => {
+  return symbolArray[getRandomInt(symbolArray.length)];
+};
+
+const generators = {
+  getUpper: getRandomUpperLetter,
+};
+
+const curateCustomPassword = (length, config) => {
+  let password = "";
+  // const sampleConfig = {
+  //   upper: true,
+  //   lower: true,
+  //   number: true,
+  //   symbol: true,
+  // };
+
+  // TODO: START HERE
+  // TODO: check the config object for which functions to use.
+
+  for (let i = 0; i < length; i++) {
+    // generate password here
+    // if sampleConfig keys are all true
+    password += generators.getUpper(upperCaseAlphabet);
+  }
+
+  return password;
+};
+
 const getRandomInt = (maxRange) => {
   // maxRange = 3, expected output 0, 1, 2
   return Math.floor(Math.random() * Math.floor(maxRange));
@@ -108,12 +149,26 @@ const loopToCreatePassword = (passwordLength, logicArray) => {
 };
 
 const createNewPassword = (requestLength, logicString) => {
+  console.log(
+    `here is random lower: ${getRandomLowerLetter(lowerCaseAlphabet)}`
+  );
+
+  console.log(
+    `here is curate; ${curateCustomPassword(16, {
+      upper: true,
+      lower: true,
+      number: true,
+      symbol: true,
+    })}`
+  );
+
   // possiblities
   // U, UL, ULS, US, USN, UN, L, LS, LSN, LSNU, S, SN, N, NUL, ULNS
   // console.log(`inside of createNewPassword ${requestLength}, ${logicString}`);
 
   // FIXME: problem: symbols don't always show up, outcome: when a value is selected like "Include symbols" there SHOULD be a symbol.
   console.log(`logicString: ${logicString}`);
+  console.log(``);
 
   // ULNS
   switch (logicString) {
